@@ -4,7 +4,7 @@ import { GET_HOURLY_EVENTS, GET_HOURLY_STATS, FILTER_HOURLY_STATS } from "../con
 
 export function getHourlyStats() {
   return function(dispatch) {
-    return axios.get('https://gifted-single.glitch.me/stats/hourly')
+    return axios.get('http://localhost:5555/stats/hourly')
       .then(res => {
         // console.log('res', res.data);
         const payload = res.data.map(row => {
@@ -25,7 +25,7 @@ export function getHourlyStats() {
 
 export function getHourlyEvents() {
   return function(dispatch) {
-    return axios.get('https://gifted-single.glitch.me/events/hourly')
+    return axios.get('http://localhost:5555/events/hourly')
       .then(res => {
         console.log('res', res.data);
         const payload = res.data.map(row => {

@@ -4,7 +4,6 @@ const express = require('express')
 const pg = require('pg')
 const cors = require('cors')
 
-
 const app = express()
 // configs come from standard PostgreSQL env vars
 // https://www.postgresql.org/docs/9.6/static/libpq-envars.html
@@ -23,7 +22,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/events/hourly', (req, res, next) => {
-  console.log('database', process.env['PGDATABASE'])
   req.sqlQuery = `
     SELECT date, hour, events, poi.name as location
     FROM public.hourly_events
