@@ -1,0 +1,8 @@
+.range-slider {
+  display: flex;
+  flex-direction: row;
+}
+
+.range-slider input {
+  width: 200px;
+}
