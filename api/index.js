@@ -4,6 +4,8 @@ const express = require('express')
 const pg = require('pg')
 const cors = require('cors')
 
+const { rateLimiter } = require('./rate-limiter');
+
 const app = express()
 // configs come from standard PostgreSQL env vars
 // https://www.postgresql.org/docs/9.6/static/libpq-envars.html
@@ -16,6 +18,7 @@ const queryHandler = (req, res, next) => {
 }
 
 app.use(cors())
+app.use(rateLimiter);
 
 app.get('/', (req, res) => {
   res.send('Welcome to EQ Works 😎')
