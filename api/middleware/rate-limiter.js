@@ -31,4 +31,4 @@ const rateLimiter = (req, res, next) => {
 
 };
 
-module.exports = {rateLimiter};
+module.exports = { rateLimiter };
