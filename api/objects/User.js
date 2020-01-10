@@ -6,7 +6,6 @@ class User {
   }
 
   incrementCounter() {
-    console.log(this.counter);
     return this.counter++;
   }
 

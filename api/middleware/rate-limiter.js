@@ -4,10 +4,10 @@ const { User } = require('../objects/User');
 const requestQueue = new RequestQueue(20, 60000);
 requestQueue.clearQueue();
 
+// Basic Fixed Window Rate Limiter
+
 const rateLimiter = (req, res, next) => {
   
-  // console.log('requestQueue:', requestQueue)
-
   // get IP address of current user
   const ip = req.connection.remoteAddress;
 
@@ -21,7 +21,6 @@ const rateLimiter = (req, res, next) => {
   }
   
   user.incrementCounter();
-  // console.log('user:', user)
   
   if (user.counter > requestQueue.maxRequests) {
     return res.status(403).send(`You have exceeded the maximum requests allowed. Please try again in ${requestQueue.interval / 1000} seconds`);
