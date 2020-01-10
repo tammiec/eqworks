@@ -4,7 +4,7 @@ const express = require('express')
 const pg = require('pg')
 const cors = require('cors')
 
-const { rateLimiter } = require('./rate-limiter');
+const { rateLimiter } = require('./middleware/rate-limiter');
 
 const app = express()
 // configs come from standard PostgreSQL env vars
