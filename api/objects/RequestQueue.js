@@ -7,7 +7,7 @@ class RequestQueue {
   }
 
   addUser(user) {
-    this.users[user.id] = user
+    return this.users[user.id] = user
   }
 
   clearQueue() {

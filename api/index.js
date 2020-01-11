@@ -18,7 +18,7 @@ const queryHandler = (req, res, next) => {
 }
 
 app.use(cors())
-app.use(rateLimiter);
+app.use(rateLimiter({ maxRequests: 2, interval: 60000 }));
 
 app.get('/', (req, res) => {
   res.send('Welcome to EQ Works 😎')
