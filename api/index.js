@@ -37,9 +37,10 @@ app.get('/events/hourly', (req, res, next) => {
 
 app.get('/events/daily', (req, res, next) => {
   req.sqlQuery = `
-    SELECT date, SUM(events) AS events
+    SELECT date, SUM(events) AS events, poi.name as location
     FROM public.hourly_events
-    GROUP BY date
+    JOIN public.poi ON public.poi.poi_id = public.hourly_events.poi_id
+    GROUP BY date, poi.name
     ORDER BY date
     LIMIT 7;
   `
@@ -62,9 +63,11 @@ app.get('/stats/daily', (req, res, next) => {
     SELECT date,
         SUM(impressions) AS impressions,
         SUM(clicks) AS clicks,
-        SUM(revenue) AS revenue
+        SUM(revenue) AS revenue,
+        poi.name as location
     FROM public.hourly_stats
-    GROUP BY date
+    JOIN public.poi ON public.poi.poi_id = public.hourly_stats.poi_id
+    GROUP BY date, poi.name
     ORDER BY date
     LIMIT 7;
   `
