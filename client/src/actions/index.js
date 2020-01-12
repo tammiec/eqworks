@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_HOURLY_EVENTS, GET_HOURLY_STATS, FILTER_HOURLY_STATS } from "../constants/action-types";
+import { GET_HOURLY_EVENTS, GET_HOURLY_STATS, FILTER_HOURLY_STATS, SHOW_EVENTS, SHOW_STATS } from "../constants/action-types";
 
 export function getHourlyStats() {
   return function(dispatch) {
@@ -43,4 +43,12 @@ export function getHourlyEvents() {
 
 export function filterHourlyStats(searchTerm) {
   return { type: FILTER_HOURLY_STATS, payload: searchTerm }
+}
+
+export function setShowEvents() {
+  return { type: SHOW_EVENTS };
+}
+
+export function setShowStats() {
+  return { type: SHOW_STATS };
 }
