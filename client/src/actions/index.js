@@ -49,13 +49,10 @@ export function getDataList(endpoint) {
       .then(res => {
         // console.log(res.data);
         const payload = res.data.map(row => {
-          return {
+          return {...row,
             date: row.date.slice(0, 10),
             time: `${row.hour}:00`,
-            location: row.location,
-            impressions: row.impressions,
-            clicks: row.clicks,
-            revenue: parseFloat(row.revenue)
+            location: row.location
           }
         });
         // console.log('payload:', payload)
