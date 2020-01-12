@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getHourlyStats, filterHourlyStats } from '../actions/index';
+import { getDataList, filterDataList } from '../actions/index';
 
 import Button from './Button';
 import Slider from './Slider';
@@ -14,11 +14,11 @@ export default function SearchBar() {
   const handleChange = event => {
     const value = event.target.value;
     setSearchTerm(value);
-    dispatch(filterHourlyStats(value));
+    dispatch(filterDataList(value));
   };
 
   const onReset = () => {
-    dispatch(getHourlyStats());
+    dispatch(getDataList('/stats/hourly'));
   };
 
   return (
