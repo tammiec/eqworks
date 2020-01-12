@@ -21,8 +21,8 @@ export default function Table() {
         <td>{row.date.slice(0, 10)}</td>
         <td>{row.hour}:00</td>
         <td>{row.location}</td>
-        {showStats && <td>{row.impressions.toLocaleString('en-US')}</td>}
-        {showStats && <td>{row.clicks}</td>}
+        {showStats && <td>{parseInt(row.impressions).toLocaleString('en-US')}</td>}
+        {showStats && <td>{parseInt(row.clicks).toLocaleString('en-US')}</td>}
         {showStats && <td>{parseFloat(row.revenue).toLocaleString('en-US', {style: 'currency', currency: 'CAD', minimumFractionDigits: 2})}</td>}
         {showEvents && <td>{row.events}</td>}
       </tr>
