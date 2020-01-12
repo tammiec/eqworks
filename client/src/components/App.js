@@ -6,6 +6,7 @@ import Table from './Table';
 import NavBar from './NavBar';
 
 function App() {
+
   return (
     <div className="App">
       <NavBar />

@@ -1,28 +1,23 @@
-import { GET_HOURLY_EVENTS, GET_HOURLY_STATS, FILTER_HOURLY_STATS, SHOW_EVENTS, SHOW_STATS } from "../constants/action-types";
+import { GET_HOURLY_EVENTS, GET_HOURLY_STATS, FILTER_HOURLY_STATS, SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST } from "../constants/action-types";
 
 const initialState = {
-  hourlyEvents: [],
-  hourlyStats: [],
-  filteredStats: [],
+  dataList: [],
+  filteredData: [],
   showEvents: false,
   showStats: true
 };
 
 function rootReducer(state = initialState, action) {
   
-  if (action.type === GET_HOURLY_EVENTS) {
-    return {...state, hourlyEvents: [...action.payload]};
+  if (action.type === GET_DATA_LIST) {
+    return {...state, dataList: [...action.payload], filteredData: [...action.payload]};
   }
 
-  if (action.type === GET_HOURLY_STATS) {
-    return {...state, hourlyStats: [...action.payload], filteredStats: [...action.payload]};
-  }
-
-  if (action.type === FILTER_HOURLY_STATS) {
-    const filteredStats = state.hourlyStats.filter(stat => {
+  if (action.type === FILTER_DATA_LIST) {
+    const filteredData = state.dataList.filter(stat => {
       return stat.location.toLowerCase().includes(action.payload.toLowerCase());
     });
-    return {...state, filteredStats: [...filteredStats] };
+    return {...state, filteredData: [...filteredData] };
   }
 
   if (action.type === SHOW_EVENTS) {

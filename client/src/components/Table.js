@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getHourlyStats } from '../actions/index';
+import { getDataList } from '../actions/index';
 
 export default function Table() {
 
-  const filteredStats = useSelector(state => state.filteredStats);
+  const filteredData = useSelector(state => state.filteredData);
   const showEvents = useSelector(state => state.showEvents);
   const showStats = useSelector(state => state.showStats);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getHourlyStats());
+    dispatch(getDataList('/stats/hourly'));
   }, [dispatch]);
   
-  const dataRows = filteredStats.map((row, index) => {
+  const dataRows = filteredData.map((row, index) => {
     // console.log('row', row);
     return (
       <tr key={index}>

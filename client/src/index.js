@@ -6,6 +6,10 @@ import { Provider } from "react-redux";
 import store from "./store/index";
 import * as serviceWorker from './serviceWorker';
 
+import axios from 'axios';
+
+axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
