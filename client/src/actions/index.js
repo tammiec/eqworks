@@ -47,16 +47,8 @@ export function getDataList(endpoint) {
   return function(dispatch) {
     return axios.get(endpoint)
       .then(res => {
-        // console.log(res.data);
-        const payload = res.data.map(row => {
-          return {...row,
-            date: row.date.slice(0, 10),
-            time: `${row.hour}:00`,
-            location: row.location
-          }
-        });
         // console.log('payload:', payload)
-        dispatch({ type: GET_DATA_LIST, payload });
+        dispatch({ type: GET_DATA_LIST, payload: res.data });
       })
   }
 }

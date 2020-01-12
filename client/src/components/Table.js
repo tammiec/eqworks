@@ -18,12 +18,12 @@ export default function Table() {
     // console.log('row', row);
     return (
       <tr key={index}>
-        <td>{row.date}</td>
-        <td>{row.time}</td>
+        <td>{row.date.slice(0, 10)}</td>
+        <td>{row.hour}:00</td>
         <td>{row.location}</td>
         {showStats && <td>{row.impressions.toLocaleString('en-US')}</td>}
         {showStats && <td>{row.clicks}</td>}
-        {showStats && <td>{row.revenue.toLocaleString('en-US', {style: 'currency', currency: 'CAD', minimumFractionDigits: 2})}</td>}
+        {showStats && <td>{parseFloat(row.revenue).toLocaleString('en-US', {style: 'currency', currency: 'CAD', minimumFractionDigits: 2})}</td>}
         {showEvents && <td>{row.events}</td>}
       </tr>
     )
