@@ -1,4 +1,4 @@
-import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SHOW_DAILY, SHOW_HOURLY } from "../constants/action-types";
+import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SHOW_HOURLY, SORT_BY } from "../constants/action-types";
 import axios from 'axios';
 
 export function getDataList(endpoint) {
@@ -24,4 +24,8 @@ export function setShowStats() {
 
 export function setShowHourly(bool) {
   return { type: SHOW_HOURLY, payload: bool };
+}
+
+export function sortBy(value) {
+  return { type: SORT_BY, payload: value };
 }

@@ -4,6 +4,7 @@ import { getDataList, filterDataList } from '../actions/index';
 
 import Button from './Button';
 import Slider from './Slider';
+import Dropdown from './Dropdown';
 
 export default function SearchBar() {
 
@@ -37,6 +38,7 @@ export default function SearchBar() {
         min={0}
         max={200}
       />
+      <Dropdown />
     </>
   );
 }
