@@ -5,4 +5,9 @@ button {
   border: none;
   text-transform: uppercase;
   outline-width: 1px;
+  padding: 0.5em;
+}
+
+button:hover {
+  cursor: pointer;
 }

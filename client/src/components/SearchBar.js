@@ -29,7 +29,7 @@ export default function SearchBar() {
   };
 
   return (
-    <>
+    <div id='search-container'>
       <input 
         id='search-bar'
         placeholder='Search by location' 
@@ -37,6 +37,7 @@ export default function SearchBar() {
         onChange={event => handleChange(event)}
       />
       <Button
+        id='reset-button'
         label='Reset'
         onClick={handleReset}
       />
@@ -69,6 +70,6 @@ export default function SearchBar() {
         step={10}
       />}
       <Dropdown label='Sort By' />
-    </>
+    </div>
   );
 }
