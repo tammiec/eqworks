@@ -4,6 +4,7 @@ import Fuse from 'fuse.js';
 const initialState = {
   dataList: [],
   filteredData: [],
+  filteredDataByMin: [],
   searchTerm: '',
   showEvents: false,
   showStats: true,
@@ -15,7 +16,7 @@ function rootReducer(state = initialState, action) {
   console.log('reducer', state)
   
   if (action.type === GET_DATA_LIST) {
-    return {...state, error: {...state.error, bool: false}, dataList: [...action.payload], filteredData: [...action.payload]};
+    return {...state, error: {...state.error, bool: false}, dataList: [...action.payload], filteredData: [...action.payload], filteredDataByMin: [...action.payload]};
   }
 
   if (action.type === FILTER_DATA_LIST) {
@@ -26,7 +27,7 @@ function rootReducer(state = initialState, action) {
     const fuse = new Fuse(state.dataList, options);
     const results = state.searchTerm === '' ? state.dataList : fuse.search(state.searchTerm);
     
-    return {...state, filteredData: [...results]};
+    return {...state, filteredData: [...results], filteredDataByMin: [...results]};
   }
 
   if (action.type === SHOW_EVENTS) {
@@ -43,12 +44,12 @@ function rootReducer(state = initialState, action) {
 
   if (action.type === SORT_BY) {
     const sorted = state.filteredData.sort((a, b) => b[action.payload] - a[action.payload]);
-    return {...state, filteredData: [...sorted]};
+    return {...state, filteredDataByMin: [...sorted]};
   }
 
   if (action.type === SET_MIN_VALUE) {
     const filtered = state.filteredData.filter(row => parseInt(row[action.payload.type]) >= action.payload.value);
-    return {...state, filteredData: [...filtered]};
+    return {...state, filteredDataByMin: [...filtered]};
   }
 
   if (action.type === SET_ERROR) {
