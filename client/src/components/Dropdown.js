@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { sortBy } from '../actions/index';
 
+import './Dropdown.css';
+
 export default function Dropdown(props) {
 
   const showEvents = useSelector(state => state.showEvents);

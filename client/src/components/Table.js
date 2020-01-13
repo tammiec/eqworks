@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDataList } from '../actions/index';
 
+import './Table.css';
+
 export default function Table() {
 
   const filteredData = useSelector(state => state.filteredData);

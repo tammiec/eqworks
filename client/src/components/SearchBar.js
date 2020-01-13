@@ -6,6 +6,8 @@ import Button from './Button';
 import Slider from './Slider';
 import Dropdown from './Dropdown';
 
+import './SearchBar.css';
+
 export default function SearchBar() {
 
   const [ searchTerm, setSearchTerm ] = useState('');
