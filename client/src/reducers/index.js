@@ -1,11 +1,12 @@
-import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST } from "../constants/action-types";
+import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SHOW_DAILY, SHOW_HOURLY } from "../constants/action-types";
 import Fuse from 'fuse.js';
 
 const initialState = {
   dataList: [],
   filteredData: [],
   showEvents: false,
-  showStats: true
+  showStats: true,
+  showHourly: true,
 };
 
 function rootReducer(state = initialState, action) {
@@ -34,6 +35,10 @@ function rootReducer(state = initialState, action) {
 
   if (action.type === SHOW_STATS) {
     return {...state, showEvents: false, showStats: true};
+  }
+
+  if (action.type === SHOW_HOURLY) {
+    return {...state, showHourly: action.payload };
   }
 
   return state;

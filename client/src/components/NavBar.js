@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setShowEvents, setShowStats, getDataList } from '../actions/index';
+import { setShowEvents, setShowStats, getDataList, setShowHourly } from '../actions/index';
 
 import Button from './Button';
 
@@ -13,21 +13,25 @@ export default function NavBar(props) {
   const handleDailyEvents = () => {
     dispatch(getDataList('/events/daily'));
     dispatch(setShowEvents());
+    dispatch(setShowHourly(false));
   };
 
   const handleHourlyEvents = () => {
     dispatch(getDataList('/events/hourly'));
     dispatch(setShowEvents());
+    dispatch(setShowHourly(true));
   };
 
   const handleDailyStats = () => {
     dispatch(getDataList('/stats/daily'));
     dispatch(setShowStats());
+    dispatch(setShowHourly(false));
   };
 
   const handleHourlyStats = () => {
     dispatch(getDataList('/stats/hourly'));
     dispatch(setShowStats());
+    dispatch(setShowHourly(true));
   };
 
   return (

@@ -7,6 +7,7 @@ export default function Table() {
   const filteredData = useSelector(state => state.filteredData);
   const showEvents = useSelector(state => state.showEvents);
   const showStats = useSelector(state => state.showStats);
+  const showHourly = useSelector(state => state.showHourly);
 
   const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ export default function Table() {
     return (
       <tr key={index}>
         <td>{row.date.slice(0, 10)}</td>
-        <td>{row.hour}:00</td>
+        {showHourly && <td>{row.hour}:00</td>}
         <td>{row.location}</td>
         {showStats && <td>{parseInt(row.impressions).toLocaleString('en-US')}</td>}
         {showStats && <td>{parseInt(row.clicks).toLocaleString('en-US')}</td>}
@@ -34,7 +35,7 @@ export default function Table() {
       <thead>
         <tr>
           <th>Date</th>
-          <th>Time</th>
+          {showHourly && <th>Time</th>}
           <th>Location</th>
           {showStats && <th>Impressions</th>}
           {showStats && <th>Clicks</th>}
