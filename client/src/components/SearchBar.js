@@ -23,20 +23,22 @@ export default function SearchBar() {
     dispatch(filterDataList(value));
   };
 
-  const onReset = () => {
-    dispatch(getDataList('/stats/hourly'));
+  const handleReset = () => {
+    setSearchTerm('');
+    dispatch(filterDataList(''));
   };
 
   return (
     <>
       <input 
+        id='search-bar'
         placeholder='Search by location' 
         value={searchTerm}
         onChange={event => handleChange(event)}
       />
       <Button
         label='Reset'
-        onClick={onReset}
+        onClick={handleReset}
       />
       {showStats && 
         <>
@@ -66,7 +68,7 @@ export default function SearchBar() {
         max={100}
         step={10}
       />}
-      <Dropdown />
+      <Dropdown label='Sort By' />
     </>
   );
 }

@@ -16,16 +16,19 @@ export default function Dropdown(props) {
   }
 
   return (
-    <select name='Sort By' onChange={event => handleChange(event)} >
-      <option value='date'>Date</option>
-      {showStats && 
-        <>
-          <option value='impressions'>Impressions</option>
-          <option value='clicks'>Clicks</option>
-          <option value='revenue'>Revenue</option>
-        </>
-      }
-      {showEvents && <option value='events'>Events</option>}
-    </select>
+    <div className='dropdown'>
+      <h6>{props.label}</h6>
+      <select name='Sort By' onChange={event => handleChange(event)} >
+        <option value='date'>Date</option>
+        {showStats && 
+          <>
+            <option value='impressions'>Impressions</option>
+            <option value='clicks'>Clicks</option>
+            <option value='revenue'>Revenue</option>
+          </>
+        }
+        {showEvents && <option value='events'>Events</option>}
+      </select>
+    </div>
   );
 }

@@ -12,11 +12,13 @@ function App() {
   const error = useSelector(state => state.error);
 
   return (
-    <div className="App">
+    <>
       <NavBar />
-      <SearchBar />
-      {error.bool ? <Error message={error.message} /> : <Table />}
-    </div>
+      <div id="app-container">
+        <SearchBar />
+        {error.bool ? <Error message={error.message} /> : <Table />}
+      </div>
+    </>
   );
 }
 

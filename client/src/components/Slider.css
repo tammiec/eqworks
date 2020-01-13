@@ -1,8 +1,23 @@
 .range-slider {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 60%;
+}
+
+@media only screen and (max-width: 720px) {
+  .range-slider {
+    width: 80%;
+  }
+}
+
+.range-slider h6 {
+  flex-basis: 20%;
+  text-align: start;
+  padding-right: 0.5em;
 }
 
 .range-slider input {
-  width: 200px;
+  width: 100%;
 }

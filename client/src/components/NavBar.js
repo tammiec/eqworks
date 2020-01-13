@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setShowEvents, setShowStats, getDataList, setShowHourly } from '../actions/index';
 
 import Button from './Button';
+import logo from './eqworks-white.png';
 
 import './NavBar.css';
 
@@ -35,11 +36,14 @@ export default function NavBar(props) {
   };
 
   return (
-    <header id='nav-bar'>
-      <Button label='Daily Events' onClick={handleDailyEvents} />
-      <Button label='Hourly Events' onClick={handleHourlyEvents} />
-      <Button label='Daily Stats' onClick={handleDailyStats} />
-      <Button label='Hourly Stats' onClick={handleHourlyStats} />
+    <header>
+      <img src={logo} alt='EQ Works logo' />
+      <div id='nav-bar'>
+        <Button label='Daily Events' onClick={handleDailyEvents} />
+        <Button label='Hourly Events' onClick={handleHourlyEvents} />
+        <Button label='Daily Stats' onClick={handleDailyStats} />
+        <Button label='Hourly Stats' onClick={handleHourlyStats} />
+      </div>
     </header>
   );
 }

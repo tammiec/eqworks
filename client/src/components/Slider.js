@@ -17,8 +17,8 @@ export default function Slider(props) {
 
   return (
     <div className='range-slider'>
-      <p>{props.type}</p>
-      <p>Minimum: {min}</p>
+      <h6>{props.type}</h6>
+      <h6>Min: {min}</h6>
       <input 
         className='min-slider'
         type='range'

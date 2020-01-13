@@ -36,7 +36,7 @@ export default function Table() {
   });
 
   return (
-    <table>
+    <table id='data-table'>
       <thead>
         <tr>
           <th>Date</th>

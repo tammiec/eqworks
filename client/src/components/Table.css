@@ -1,0 +1,16 @@
+#data-table {
+  width: 80%;
+  border-collapse: collapse;
+  overflow: scroll;
+}
+
+th {
+  padding: 0.5em 0.5em;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85em;
+}
+
+table, th, td {
+  border: 1px solid #aeaeae;
+}

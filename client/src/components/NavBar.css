@@ -1,6 +1,6 @@
 #nav-bar {
-  height: 2em;
-  background-color: black;
+  height: 3em;
+  background: linear-gradient(90deg, rgba(3, 78, 144, 0.9) 0%, rgba(25, 180, 215, 0.9) 100%); 
   color: white;
   width: 100%;
   position: fixed;
@@ -8,6 +8,17 @@
   margin-bottom: 1em;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+}
+
+#nav-bar button {
+  color: white;
+}
+
+header img {
+  height: 2em;
+  width: auto;
+  margin-left: 0.5em;
+  z-index: 2;
 }

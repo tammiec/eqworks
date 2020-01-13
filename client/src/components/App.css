@@ -1,8 +1,10 @@
-.App {
+#app-container {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 3em;
+  padding-top: 4em;
+  color: #1E1E1E;
+  background-color: #FFFFFF;
 }
