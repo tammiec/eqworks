@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setShowEvents, setShowStats, getDataList, setShowHourly } from '../actions/index';
+import { setShowEvents, setShowStats, getDataList, setShowHourly, setSearchTerm } from '../actions/index';
 
 import Button from './Button';
 import logo from './eqworks-white.png';
@@ -15,24 +15,28 @@ export default function NavBar(props) {
     dispatch(getDataList('/events/daily'));
     dispatch(setShowEvents());
     dispatch(setShowHourly(false));
+    dispatch(setSearchTerm(''));
   };
 
   const handleHourlyEvents = () => {
     dispatch(getDataList('/events/hourly'));
     dispatch(setShowEvents());
     dispatch(setShowHourly(true));
+    dispatch(setSearchTerm(''));
   };
 
   const handleDailyStats = () => {
     dispatch(getDataList('/stats/daily'));
     dispatch(setShowStats());
     dispatch(setShowHourly(false));
+    dispatch(setSearchTerm(''));
   };
 
   const handleHourlyStats = () => {
     dispatch(getDataList('/stats/hourly'));
     dispatch(setShowStats());
     dispatch(setShowHourly(true));
+    dispatch(setSearchTerm(''));
   };
 
   return (

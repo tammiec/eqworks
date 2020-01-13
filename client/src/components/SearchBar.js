@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterDataList } from '../actions/index';
+import { filterDataList, setSearchTerm } from '../actions/index';
 
 import Button from './Button';
 import Slider from './Slider';
@@ -9,17 +9,16 @@ import Dropdown from './Dropdown';
 import './SearchBar.css';
 
 export default function SearchBar() {
-
-  const [ searchTerm, setSearchTerm ] = useState('');
   
   const showEvents = useSelector(state => state.showEvents);
   const showStats = useSelector(state => state.showStats);
+  const searchTerm = useSelector(state => state.searchTerm);
 
   const dispatch = useDispatch();
 
   const handleChange = event => {
     const value = event.target.value;
-    setSearchTerm(value);
+    dispatch(setSearchTerm(value));
     dispatch(filterDataList(value));
   };
 
