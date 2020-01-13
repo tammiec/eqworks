@@ -11,7 +11,7 @@
 }
 
 #search-bar {
-  width: 100%;
+  width: calc(100% - 1em);
   height: 2em;
   font: inherit;
   padding: 0 0.5em 0 0.5em;
