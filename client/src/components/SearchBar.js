@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getDataList, filterDataList } from '../actions/index';
 
 import Button from './Button';
@@ -34,9 +34,28 @@ export default function SearchBar() {
         onClick={onReset}
       />
       <Slider
+        category='Impressions'
+        min={0}
+        max={300000}
+        step={10000}
+      />
+      <Slider
         category='Clicks'
         min={0}
-        max={200}
+        max={2000}
+        step={100}
+      />
+      <Slider
+        category='Revenue'
+        min={0}
+        max={300}
+        step={100}
+      />
+      <Slider
+        category='Events'
+        min={0}
+        max={100}
+        step={10}
       />
       <Dropdown />
     </>
