@@ -13,7 +13,6 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-  console.log('reducer', state)
   
   if (action.type === GET_DATA_LIST) {
     return {...state, error: {...state.error, bool: false}, dataList: [...action.payload], filteredData: [...action.payload], filteredDataByMin: [...action.payload]};

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDataList } from '../actions/index';
+import { timeFormatter } from '../helpers/timeFormatter';
 
 import './Table.css';
 
@@ -21,7 +22,7 @@ export default function Table() {
     return (
       <tr key={index}>
         <td>{row.date.slice(0, 10)}</td>
-        {showHourly && <td>{row.hour}:00</td>}
+        {showHourly && <td>{timeFormatter(row.hour)}</td>}
         <td>{row.location}</td>
         {showStats && 
           <>
