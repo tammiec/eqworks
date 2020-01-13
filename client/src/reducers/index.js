@@ -29,7 +29,7 @@ function rootReducer(state = initialState, action) {
       shouldSort: true,
       keys: ['location']
     };
-    const fuse = new Fuse(state.dataList, options);
+    const fuse = new Fuse(state.filteredData, options);
     const results = state.searchTerm === '' ? state.dataList : fuse.search(state.searchTerm);
     
     return {...state, filteredData: [...results], filteredDataByMin: [...results]};
@@ -76,8 +76,7 @@ function rootReducer(state = initialState, action) {
         impressions: 0,
         clicks: 0,
         revenue: 0
-      },
-      sortBy: 'date'
+      }
     };
   }
 

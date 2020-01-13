@@ -50,8 +50,8 @@ export default function SearchBar() {
           <Slider
             type='clicks'
             min={0}
-            max={2000}
-            step={100}
+            max={500}
+            step={10}
           />
           <Slider
             type='revenue'
