@@ -5,6 +5,6 @@ import './Error.css';
 export default function Error(props) {
 
   return (
-    <h3>{props.message}</h3>
+    <h3 className='error-message'>{props.message}</h3>
   );
 }
