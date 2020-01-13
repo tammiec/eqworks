@@ -7,3 +7,4 @@ export const SORT_BY = 'SORT_BY';
 export const SET_MIN_VALUE = 'SET_MIN_VALUE';
 export const SET_ERROR = 'SET_ERROR';
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
+export const RESET = 'RESET';

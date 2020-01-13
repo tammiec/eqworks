@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { setMinValue } from '../actions/index';
 
 import './Slider.css';
 
 export default function Slider(props) {
 
-  const [min, setMin] = useState(props.min);
-
+  const min = useSelector(state => state.minValues[props.type]);
   const dispatch = useDispatch();
 
   const handleChange = event => {
-    setMin(event.target.value);
     dispatch(setMinValue(props.type, event.target.value));
   };
 
@@ -24,7 +22,7 @@ export default function Slider(props) {
         type='range'
         min={props.min}
         max={props.max}
-        defaultValue={min}
+        value={min}
         onChange={event => handleChange(event)}
         step={props.step}
       />

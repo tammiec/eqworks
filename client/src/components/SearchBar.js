@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterDataList, setSearchTerm } from '../actions/index';
+import { filterDataList, setSearchTerm, reset } from '../actions/index';
 
 import Button from './Button';
 import Slider from './Slider';
@@ -23,8 +23,7 @@ export default function SearchBar() {
   };
 
   const handleReset = () => {
-    dispatch(setSearchTerm(''));
-    dispatch(filterDataList());
+    dispatch(reset());
   };
 
   return (

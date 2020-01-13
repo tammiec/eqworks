@@ -1,4 +1,4 @@
-import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SHOW_HOURLY, SORT_BY, SET_MIN_VALUE, SET_ERROR, SET_SEARCH_TERM } from "../constants/action-types";
+import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SHOW_HOURLY, SORT_BY, SET_MIN_VALUE, SET_ERROR, SET_SEARCH_TERM, RESET } from "../constants/action-types";
 import axios from 'axios';
 
 export function getDataList(endpoint) {
@@ -39,4 +39,8 @@ export function setMinValue(type, value) {
 
 export function setSearchTerm(value) {
   return { type: SET_SEARCH_TERM, payload: value };
+}
+
+export function reset() {
+  return { type: RESET };
 }

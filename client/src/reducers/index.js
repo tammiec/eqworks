@@ -1,4 +1,4 @@
-import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SORT_BY, SHOW_HOURLY, SET_MIN_VALUE, SET_ERROR, SET_SEARCH_TERM } from "../constants/action-types";
+import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SORT_BY, SHOW_HOURLY, SET_MIN_VALUE, SET_ERROR, SET_SEARCH_TERM, RESET } from "../constants/action-types";
 import Fuse from 'fuse.js';
 
 const initialState = {
@@ -6,6 +6,12 @@ const initialState = {
   filteredData: [],
   filteredDataByMin: [],
   searchTerm: '',
+  minValues: {
+    events: 0,
+    impressions: 0,
+    clicks: 0,
+    revenue: 0
+  },
   showEvents: false,
   showStats: true,
   showHourly: true,
@@ -47,17 +53,32 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === SET_MIN_VALUE) {
-    const filtered = state.filteredData.filter(row => parseInt(row[action.payload.type]) >= action.payload.value);
-    return {...state, filteredDataByMin: [...filtered]};
+    let filtered = state.filteredData.filter(row => parseInt(row[action.payload.type]) >= action.payload.value);
+    return {...state, minValues: {...state.minValues, [action.payload.type]: action.payload.value}, filteredDataByMin: [...filtered]};
   }
 
   if (action.type === SET_ERROR) {
-    console.log(action.payload);
     return {...state, error: {...state.error, bool: true, message: action.payload}}
   }
 
   if (action.type === SET_SEARCH_TERM) {
     return {...state, searchTerm: action.payload}
+  }
+
+  if (action.type === RESET) {
+    return {
+      ...state, 
+      filteredData: [...state.dataList], 
+      filteredDataByMin: [...state.dataList],
+      searchTerm: '',
+      minValues: {
+        events: 0,
+        impressions: 0,
+        clicks: 0,
+        revenue: 0
+      },
+      sortBy: 'date'
+    };
   }
 
   return state;
