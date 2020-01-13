@@ -1,4 +1,4 @@
-import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SORT_BY, SHOW_HOURLY } from "../constants/action-types";
+import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SORT_BY, SHOW_HOURLY, SET_MIN_VALUE } from "../constants/action-types";
 import Fuse from 'fuse.js';
 
 const initialState = {
@@ -42,8 +42,13 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === SORT_BY) {
-    const sorted = state.filteredData.sort((a, b) => b[action.payload] - a[action.payload]);
+    const sorted = state.dataList.sort((a, b) => b[action.payload] - a[action.payload]);
     return {...state, filteredData: sorted};
+  }
+
+  if (action.type === SET_MIN_VALUE) {
+    const filtered = state.dataList.filter(row => parseInt(row[action.payload.type]) >= action.payload.value);
+    return {...state, filteredData: filtered};
   }
 
   return state;

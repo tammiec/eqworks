@@ -34,25 +34,25 @@ export default function SearchBar() {
         onClick={onReset}
       />
       <Slider
-        category='Impressions'
+        type='impressions'
         min={0}
         max={300000}
         step={10000}
       />
       <Slider
-        category='Clicks'
+        type='clicks'
         min={0}
         max={2000}
         step={100}
       />
       <Slider
-        category='Revenue'
+        type='revenue'
         min={0}
         max={300}
         step={100}
       />
       <Slider
-        category='Events'
+        type='events'
         min={0}
         max={100}
         step={10}
