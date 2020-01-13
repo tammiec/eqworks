@@ -13,8 +13,8 @@ export function getDataList(endpoint) {
   }
 }
 
-export function filterDataList(searchTerm) {
-  return { type: FILTER_DATA_LIST, payload: searchTerm }
+export function filterDataList() {
+  return { type: FILTER_DATA_LIST }
 }
 
 export function setShowEvents() {

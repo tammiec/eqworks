@@ -19,12 +19,12 @@ export default function SearchBar() {
   const handleChange = event => {
     const value = event.target.value;
     dispatch(setSearchTerm(value));
-    dispatch(filterDataList(value));
+    dispatch(filterDataList());
   };
 
   const handleReset = () => {
-    setSearchTerm('');
-    dispatch(filterDataList(''));
+    dispatch(setSearchTerm(''));
+    dispatch(filterDataList());
   };
 
   return (
