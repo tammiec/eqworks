@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDataList, filterDataList } from '../actions/index';
+import { filterDataList } from '../actions/index';
 
 import Button from './Button';
 import Slider from './Slider';
