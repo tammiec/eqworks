@@ -1,4 +1,4 @@
-import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SORT_BY, SHOW_HOURLY, SET_MIN_VALUE } from "../constants/action-types";
+import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SORT_BY, SHOW_HOURLY, SET_MIN_VALUE, SET_ERROR } from "../constants/action-types";
 import Fuse from 'fuse.js';
 
 const initialState = {
@@ -7,12 +7,13 @@ const initialState = {
   showEvents: false,
   showStats: true,
   showHourly: true,
+  error: { bool: false }
 };
 
 function rootReducer(state = initialState, action) {
   
   if (action.type === GET_DATA_LIST) {
-    return {...state, dataList: [...action.payload], filteredData: [...action.payload]};
+    return {...state, error: {...state.error, bool: false}, dataList: [...action.payload], filteredData: [...action.payload]};
   }
 
   if (action.type === FILTER_DATA_LIST) {
@@ -49,6 +50,11 @@ function rootReducer(state = initialState, action) {
   if (action.type === SET_MIN_VALUE) {
     const filtered = state.dataList.filter(row => parseInt(row[action.payload.type]) >= action.payload.value);
     return {...state, filteredData: filtered};
+  }
+
+  if (action.type === SET_ERROR) {
+    console.log(action.payload);
+    return {...state, error: {...state.error, bool: true, message: action.payload}}
   }
 
   return state;

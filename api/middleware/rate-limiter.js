@@ -27,7 +27,7 @@ const rateLimiter = options => {
     user.incrementCounter();
     
     if (user.counter > requestQueue.maxRequests) {
-      return res.status(403).send(`You have exceeded the maximum requests allowed. Please try again in ${requestQueue.interval / 1000} seconds`);
+      return res.status(403).send(`You have exceeded the maximum requests allowed. Please try again in ${requestQueue.interval / 1000} seconds.`);
     } else {
       return next();
     }

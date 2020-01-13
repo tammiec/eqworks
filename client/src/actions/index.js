@@ -1,4 +1,4 @@
-import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SHOW_HOURLY, SORT_BY, SET_MIN_VALUE } from "../constants/action-types";
+import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SHOW_HOURLY, SORT_BY, SET_MIN_VALUE, SET_ERROR } from "../constants/action-types";
 import axios from 'axios';
 
 export function getDataList(endpoint) {
@@ -6,6 +6,9 @@ export function getDataList(endpoint) {
     return axios.get(endpoint)
       .then(res => {
         dispatch({ type: GET_DATA_LIST, payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: SET_ERROR, payload: err.response.data });
       })
   }
 }
