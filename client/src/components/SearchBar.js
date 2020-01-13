@@ -9,6 +9,9 @@ import Dropdown from './Dropdown';
 export default function SearchBar() {
 
   const [ searchTerm, setSearchTerm ] = useState('');
+  
+  const showEvents = useSelector(state => state.showEvents);
+  const showStats = useSelector(state => state.showStats);
 
   const dispatch = useDispatch();
 
@@ -33,30 +36,34 @@ export default function SearchBar() {
         label='Reset'
         onClick={onReset}
       />
-      <Slider
-        type='impressions'
-        min={0}
-        max={300000}
-        step={10000}
-      />
-      <Slider
-        type='clicks'
-        min={0}
-        max={2000}
-        step={100}
-      />
-      <Slider
-        type='revenue'
-        min={0}
-        max={300}
-        step={100}
-      />
-      <Slider
+      {showStats && 
+        <>
+          <Slider
+            type='impressions'
+            min={0}
+            max={300000}
+            step={10000}
+          />
+          <Slider
+            type='clicks'
+            min={0}
+            max={2000}
+            step={100}
+          />
+          <Slider
+            type='revenue'
+            min={0}
+            max={300}
+            step={100}
+          />
+        </>
+      }
+      {showEvents && <Slider
         type='events'
         min={0}
         max={100}
         step={10}
-      />
+      />}
       <Dropdown />
     </>
   );

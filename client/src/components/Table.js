@@ -16,15 +16,18 @@ export default function Table() {
   }, [dispatch]);
   
   const dataRows = filteredData.map((row, index) => {
-    // console.log('row', row);
     return (
       <tr key={index}>
         <td>{row.date.slice(0, 10)}</td>
         {showHourly && <td>{row.hour}:00</td>}
         <td>{row.location}</td>
-        {showStats && <td>{parseInt(row.impressions).toLocaleString('en-US')}</td>}
-        {showStats && <td>{parseInt(row.clicks).toLocaleString('en-US')}</td>}
-        {showStats && <td>{parseFloat(row.revenue).toLocaleString('en-US', {style: 'currency', currency: 'CAD', minimumFractionDigits: 2})}</td>}
+        {showStats && 
+          <>
+            <td>{parseInt(row.impressions).toLocaleString('en-US')}</td>
+            <td>{parseInt(row.clicks).toLocaleString('en-US')}</td>
+            <td>{parseFloat(row.revenue).toLocaleString('en-US', {style: 'currency', currency: 'CAD', minimumFractionDigits: 2})}</td>
+          </>
+        }
         {showEvents && <td>{row.events}</td>}
       </tr>
     )

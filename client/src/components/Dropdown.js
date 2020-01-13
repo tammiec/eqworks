@@ -5,6 +5,7 @@ import { sortBy } from '../actions/index';
 export default function Dropdown(props) {
 
   const showEvents = useSelector(state => state.showEvents);
+  const showStats = useSelector(state => state.showStats);
 
   const dispatch = useDispatch();
 
@@ -15,9 +16,13 @@ export default function Dropdown(props) {
   return (
     <select name='Sort By' onChange={event => handleChange(event)} >
       <option value='date'>Date</option>
-      {!showEvents && <option value='impressions'>Impressions</option>}
-      {!showEvents && <option value='clicks'>Clicks</option>}
-      {!showEvents && <option value='revenue'>Revenue</option>}
+      {showStats && 
+        <>
+          <option value='impressions'>Impressions</option>
+          <option value='clicks'>Clicks</option>
+          <option value='revenue'>Revenue</option>
+        </>
+      }
       {showEvents && <option value='events'>Events</option>}
     </select>
   );
