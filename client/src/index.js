@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
+
 import { Provider } from "react-redux";
 import store from "./store/index";
-import * as serviceWorker from './serviceWorker';
 
 import axios from 'axios';
 
+import * as serviceWorker from './serviceWorker';
+
+import App from './components/App';
+
+import './index.css';
+
+// Axios global defaults config
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
 ReactDOM.render(

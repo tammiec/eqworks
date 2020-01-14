@@ -21,17 +21,25 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   
   if (action.type === GET_DATA_LIST) {
-    return {...state, error: {...state.error, bool: false}, dataList: [...action.payload], filteredData: [...action.payload], filteredDataByMin: [...action.payload]};
+    return {...state, error: {...state.error, bool: false}, dataList: [...action.payload], filteredData: [...action.payload]};
   }
 
   if (action.type === FILTER_DATA_LIST) {
+
+    // Config fuzzy search options
     const options = {
       shouldSort: true,
       keys: ['location']
     };
-    const fuse = new Fuse(state.filteredData, options);
+
+    // Create new Fuse object for fuzzy searh
+    const fuse = new Fuse(state.dataList, options);
+
+    // Filter by location name
     const results = (state.searchTerm === '' ? state.dataList : fuse.search(state.searchTerm))
+      // Sort by selected stat
       .sort((a, b) => b[state.sortBy] - a[state.sortBy])
+      // Filter by minimum values
       .filter(row => {
         let events = true;
         let impressions = true;
@@ -52,6 +60,7 @@ function rootReducer(state = initialState, action) {
         }      
         return (events && impressions && clicks && revenue);
       });
+      
     return {...state, filteredData: [...results]};
   }
 
@@ -68,12 +77,10 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === SET_SORT_BY) {
-    // let sorted = state.filteredData.sort((a, b) => b[action.payload] - a[action.payload]);
     return {...state, sortBy: action.payload};
   }
 
   if (action.type === SET_MIN_VALUE) {
-    // let filtered = state.filteredData.filter(row => parseInt(row[action.payload.type]) >= action.payload.value);
     return {...state, minValues: {...state.minValues, [action.payload.type]: action.payload.value}};
   }
 

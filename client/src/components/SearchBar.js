@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { filterDataList, setSearchTerm, reset } from '../actions/index';
 
@@ -34,39 +35,15 @@ export default function SearchBar() {
         value={searchTerm}
         onChange={event => handleChange(event)}
       />
-      <Button
-        id='reset-button'
-        label='Reset'
-        onClick={handleReset}
-      />
+      <Button id='reset-button' label='Reset' onClick={handleReset} />
       {showStats && 
         <>
-          <Slider
-            type='impressions'
-            min={0}
-            max={300000}
-            step={10000}
-          />
-          <Slider
-            type='clicks'
-            min={0}
-            max={500}
-            step={10}
-          />
-          <Slider
-            type='revenue'
-            min={0}
-            max={1000}
-            step={100}
-          />
+          <Slider type='impressions' min={0} max={300000} step={10000} />
+          <Slider type='clicks' min={0} max={500} step={10} />
+          <Slider type='revenue' min={0} max={1000} step={100} />
         </>
       }
-      {showEvents && <Slider
-        type='events'
-        min={0}
-        max={100}
-        step={10}
-      />}
+      {showEvents && <Slider type='events' min={0} max={100} step={10} />}
       <Dropdown label='Sort By' />
     </div>
   );

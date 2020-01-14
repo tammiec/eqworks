@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { getDataList } from '../actions/index';
 import { timeFormatter } from '../helpers/timeFormatter';
@@ -43,9 +44,13 @@ export default function Table() {
           <th>Date</th>
           {showHourly && <th>Time</th>}
           <th>Location</th>
-          {showStats && <th>Impressions</th>}
-          {showStats && <th>Clicks</th>}
-          {showStats && <th>Revenue</th>}
+          {showStats && 
+            <>
+              <th>Impressions</th>
+              <th>Clicks</th>
+              <th>Revenue</th>
+            </>
+          }
           {showEvents && <th>Events</th>}
         </tr>
       </thead>
