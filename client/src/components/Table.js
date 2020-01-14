@@ -7,7 +7,7 @@ import './Table.css';
 
 export default function Table() {
 
-  const filteredDataByMin = useSelector(state => state.filteredDataByMin);
+  const filteredData = useSelector(state => state.filteredData);
   const showEvents = useSelector(state => state.showEvents);
   const showStats = useSelector(state => state.showStats);
   const showHourly = useSelector(state => state.showHourly);
@@ -18,7 +18,7 @@ export default function Table() {
     dispatch(getDataList('/stats/hourly'));
   }, [dispatch]);
   
-  const dataRows = filteredDataByMin.map((row, index) => {
+  const dataRows = filteredData.map((row, index) => {
     return (
       <tr key={index}>
         <td>{row.date.slice(0, 10)}</td>

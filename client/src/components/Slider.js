@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setMinValue } from '../actions/index';
+import { setMinValue, filterDataList } from '../actions/index';
 
 import './Slider.css';
 
@@ -11,6 +11,7 @@ export default function Slider(props) {
 
   const handleChange = event => {
     dispatch(setMinValue(props.type, event.target.value));
+    dispatch(filterDataList());
   };
 
   return (

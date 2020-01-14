@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { sortBy } from '../actions/index';
+import { sortBy, filterDataList } from '../actions/index';
 
 import './Dropdown.css';
 
@@ -13,13 +13,14 @@ export default function Dropdown(props) {
 
   const handleChange = event => {
     dispatch(sortBy(event.target.value));
+    dispatch(filterDataList());
   }
 
   return (
     <div className='dropdown'>
       <h6>{props.label}</h6>
-      <select name='Sort By' onChange={event => handleChange(event)} >
-        <option value='date'>Date</option>
+      <select name='Sort By' defaultValue='default' onChange={event => handleChange(event)} >
+        <option disabled value='default'></option>
         {showStats && 
           <>
             <option value='impressions'>Impressions</option>
