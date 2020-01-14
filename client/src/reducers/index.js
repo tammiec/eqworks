@@ -1,4 +1,4 @@
-import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SORT_BY, SHOW_HOURLY, SET_MIN_VALUE, SET_ERROR, SET_SEARCH_TERM, RESET } from "../constants/action-types";
+import { SHOW_EVENTS, SHOW_STATS, GET_DATA_LIST, FILTER_DATA_LIST, SET_SORT_BY, SHOW_HOURLY, SET_MIN_VALUE, SET_ERROR, SET_SEARCH_TERM, RESET } from "../constants/action-types";
 import Fuse from 'fuse.js';
 
 const initialState = {
@@ -67,7 +67,7 @@ function rootReducer(state = initialState, action) {
     return {...state, showHourly: action.payload };
   }
 
-  if (action.type === SORT_BY) {
+  if (action.type === SET_SORT_BY) {
     // let sorted = state.filteredData.sort((a, b) => b[action.payload] - a[action.payload]);
     return {...state, sortBy: action.payload};
   }
@@ -96,7 +96,8 @@ function rootReducer(state = initialState, action) {
         impressions: 0,
         clicks: 0,
         revenue: 0
-      }
+      },
+      sortBy: 'default'
     };
   }
 
